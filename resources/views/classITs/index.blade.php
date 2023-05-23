@@ -26,6 +26,7 @@
                     <th>Tên lớp</th>
                     <th>Giá khóa học</th>
                     <th>Trạng thái</th>
+                    <th>Tại trường</th>
                     <th colspan="3">Hành động</th>
                 </tr>
             </thead>
@@ -36,6 +37,7 @@
                         <td>{{ $item->className }}</td>
                         <td>{{ $item->price }}</td>
                         <td>{{ $item->classStatus ? 'Đang mở' : 'Dừng hoạt động' }}</td>
+                        <td>{{  $item->school_Id }}</td>
                         <td><a href="classIT/delete/{{ $item->classId }}">Xóa</a></td>
                         <td><a href="classIT/update/{{ $item->classId }}">Chỉnh sửa</a></td>
                         <td><a href="">Xem Chi tiết</a></td>

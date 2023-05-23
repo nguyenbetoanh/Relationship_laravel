@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ClassIT;
+use App\Models\School;
+
 class ClassITController extends Controller
 {
     public function index()
@@ -12,8 +14,9 @@ class ClassITController extends Controller
         return view("classITs.index", compact('classIt'));
     }
     public function inputData()
-    {
-        return view('classITs.create');
+    {    
+        $school=School::all();
+        return view('classITs.create',compact('school'));
     }
     public function create(Request $request)
     {
@@ -21,6 +24,7 @@ class ClassITController extends Controller
         $classNew->className = $request->input('className');
         $classNew->price = $request->input('price');
         $classNew->classStatus = $request->input('classStatus');
+        $classNew->school_Id=$request->input('school_Id');
         $classNew->save();
         return redirect()->action('App\Http\Controllers\ClassITController@index');
     }
@@ -34,7 +38,8 @@ class ClassITController extends Controller
     public function inputUpdate($id)
     {
         $updateClassIt = ClassIT::findOrFail($id);
-        return view('classITs.inputUpdate',compact('updateClassIt'));
+        $school=School::all();
+        return view('classITs.inputUpdate',compact('updateClassIt','school'));
     }
     public function update(Request $request,$id)
     {
@@ -42,6 +47,7 @@ class ClassITController extends Controller
         $update->className = $request->input('className');
         $update->price = $request->input('price');
         $update->classStatus = $request->input('classStatus');
+        $update->school_Id = $request->input('school_Id');
         $update->save();
         return redirect()->action('App\Http\Controllers\ClassITController@index');
     }

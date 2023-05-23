@@ -19,6 +19,12 @@
         <label for="sta">Chọn trạng thái lớp</label><br>
         <input name="classStatus" type="radio" value="1" id="sta"/>Đang mở <br>
         <input name="classStatus" type="radio" value="0"/>Dừng hoạt động <br> <br>
+        <label for="hs">Choose truong</label>
+        <select name="school_Id" id="hs">
+            @foreach ($school as $item)
+                <option value="{{ $item->schoolId }}">{{ $item->schoolName }}</option>
+            @endforeach
+        </select> <br> <br>
         <input type="submit" value="Thêm mới" name="submit"/>
     </form>
 </body>
